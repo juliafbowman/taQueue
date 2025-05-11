@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue</title>
+    <link rel="stylesheet" href="student-queue.css"> <!-- page styling -->
+</head>
+<body>
+    <h1>Queue</h1>
+    <div class="page-content">
+      <div id="waiting-indicator" style="display: none;" class="alert alert-success">
+        <strong>Your turn!</strong> A TA will be with you shortly.
+      </div>
+    <div id="input-container">
+        <input type="text" id="name" placeholder="Enter your name">
+        <select id="help" placeholder="Question Type">
+            <option value="" disabled selected>Question Type</option>
+            <option value="Project">Project</option>
+            <option value="Homework">Homework</option>
+            <option value="Lab">Lab</option>
+            <option value="Other">Other</option>
+        </select>
+        <input type="text" id="question" placeholder="Enter your question!">
+        <button id="add-to-queue">Add to Queue!</button>
+        <!-- will style properly later -->
+        <button id="remove-self-from-queue" style="display: none; background-color: #f44336;">Remove Yourself from Queue</button>
+     
+    </div>
+   
+    <div class="queue-display">
+        <div id="queue-container">
+            <h2>Students</h2>
+            <ul id="name-list">
+                <li class="empty-message">No students in queue</li>
+            </ul>
+        </div>
+
+    </div>
+    </div>
+
+    <script type="module" src="student-queue-js.js"></script>
+    <script src="header.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/firebase-messaging-sw.js', { scope: '/' })
+          .then((registration) => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch((error) => {
+            console.error('Service Worker registration failed:', error);
+          });
+        }
+      </script>
+</body>
+</html>
+

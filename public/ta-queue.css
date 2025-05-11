@@ -1,0 +1,285 @@
+:root {
+    --primary-color: #0071e3;
+    --secondary-color: #f5f5f7;
+    --text-color: #1d1d1f;
+    --light-gray: #d2d2d7;
+    --shadow: rgba(0, 0, 0, 0.05);
+    --danger-color: #ff3b30;
+    --success-color: #34c759;
+    --warning-color: #ffcc00;
+    --radius: 8px;
+    --transition: all 0.3s ease;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  body {
+    background-color: white;
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+  }
+
+  .page-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* title for queue */ 
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 40px 0 30px;
+    text-align: center;
+    color: var(--text-color);
+  }
+
+  /* title above the queue */ 
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: var(--text-color);
+  }
+
+  /* styling for the buttons to remove / toggle */ 
+  #input-container {
+    background-color: white;
+    border-radius: var(--radius);
+    padding: 25px;
+    box-shadow: 0 4px 12px var(--shadow);
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    border: 1px solid var(--light-gray);
+  }
+
+  button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  button:hover {
+    background-color: #005bbf;
+    transform: translateY(-1px);
+  }
+
+  #remove-student {
+    background-color: var(--danger-color);
+  }
+
+  #remove-student:hover {
+    background-color: #e6352a;
+  }
+
+  #toggle-active-status {
+    background-color: var(--warning-color);
+    color: var(--text-color);
+  }
+
+  #toggle-active-status:hover {
+    background-color: #e6b800;
+  }
+
+  /* class active/inactive */
+  #toggle-active-status.active {
+    background-color: var(--success-color);
+  }
+
+  #toggle-active-status.active:hover {
+    background-color: #2eb350;
+  }
+
+  /* make sure the table itself stretches to fill entire container */ 
+  .queue-display {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+/* specificly for the table */ 
+  .queue-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--shadow);
+    border: 1px solid var(--light-gray);
+  }
+  
+  /* table header */ 
+  .queue-table thead th {
+    background-color: var(--secondary-color);
+    text-align: left;
+    padding: 15px;
+    font-weight: 500;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--light-gray);
+  }
+  
+  /* main content - each student */ 
+  .queue-table tbody tr:nth-child(even) {
+    background-color: #f9f9fa;
+  }
+  
+  .queue-table td {
+    padding: 15px;
+    border-bottom: 1px solid var(--light-gray);
+    vertical-align: top;
+  }
+  
+  /* each row in table */ 
+  .queue-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* cell content itself stuff  */
+  .student-name {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+  
+  .student-status {
+    width: 8px;
+    height: 8px;
+    background-color: var(--success-color);
+    border-radius: 50%;
+    margin-right: 12px;
+    display: inline-block;
+  }
+  
+  .help-type {
+    font-weight: 500;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+  
+  .help-type.project {
+    background-color: #e8f1fc;
+    color: #0071e3;
+  }
+  
+  .help-type.homework {
+    background-color: #f0f9eb;
+    color: #34c759;
+  }
+  
+  .help-type.lab {
+    background-color: #fff8e6;
+    color: #ff9500;
+  }
+  
+  .help-type.other {
+    background-color: #f2f2f7;
+    color: #8e8e93;
+  }
+  
+  .question-text {
+    color: #515154;
+  }
+  
+  .timestamp {
+    color: #86868b;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  
+  .empty-message {
+    color: #86868b;
+    font-style: italic;
+    text-align: center;
+    padding: 15px;
+  }
+  
+/* trying with mobile - using chrome for diff layouts */ 
+  @media (max-width: 768px) {
+    #input-container {
+      padding: 20px;
+    }
+    
+    h1 {
+      font-size: 2rem;
+      margin: 30px 0 20px;
+    }
+    
+    button {
+      width: 100%;
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    .queue-table, 
+    .queue-table thead, 
+    .queue-table tbody, 
+    .queue-table th, /* column tile */ 
+    .queue-table td, 
+    .queue-table tr {
+      display: block;
+    }
+  
+    .queue-table thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  
+    /* seperate each students box */ 
+    .queue-table tr {
+      margin-bottom: 15px;
+      border: 1px solid var(--light-gray);
+      border-radius: var(--radius);
+      background-color: white;
+      box-shadow: 0 2px 4px var(--shadow);
+      padding: 10px;
+    }
+  
+    /* table data cells */
+    .queue-table td {
+      position: relative;
+      padding-left: 40%;
+      border: none;
+      border-bottom: 1px solid #f0f0f0;
+    }
+  
+    .queue-table td:last-child {
+      border-bottom: none;
+    }
+  
+    .queue-table td:before {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      width: 35%;
+      white-space: nowrap;
+      font-weight: 500;
+      color: #888;
+    }
+  
+    /* column headers inside each row for mobbile / tiny screen */ 
+    .queue-table td:nth-of-type(1):before { content: "Student"; }
+    .queue-table td:nth-of-type(2):before { content: "Help Type"; }
+    .queue-table td:nth-of-type(3):before { content: "Question"; }
+    .queue-table td:nth-of-type(4):before { content: "Time"; }
+  }
+  

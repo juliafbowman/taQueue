@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>TA Queue</title>
+   <link rel="stylesheet" href="ta-queue.css"> <!-- page styling -->
+</head>
+<body>
+   <h1>Queue</h1>
+   
+   <div class="page-content">
+       <div id="input-container">
+           <button id="remove-student">Remove Top Student!</button>
+           <button id="toggle-active-status">Toggle Class Active Status</button>
+       </div>
+       <div class="queue-display">
+        <!-- waiting queue -->
+        <div class="waiting-queue-container mt-4">
+        <h4>Students Waiting for Help</h4>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Help Type</th>
+                    <th>Question</th>
+                    <th>Time</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="waiting-queue-data">
+                <!-- Waiting queue will be populated here -->
+                </tbody>
+            </table>
+        </div>
+           <div id="queue-container">
+               <h2>Student Queue</h2>
+           
+               <table class="queue-table">
+                 <thead>
+                   <tr>
+                     <th style="width: 20%">Student</th>
+                     <th style="width: 15%">Help Type</th>
+                     <th>Question</th>
+                     <th style="width: 10%">Time</th>
+                   </tr>
+                 </thead>
+                 <tbody id="queue-data"></tbody>
+               </table>
+             </div>
+       </div>
+   </div>
+   <script type="module" src="ta-queue-js.js"></script>
+   <script src="header.js"></script>
+</body>
+</html>

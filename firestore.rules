@@ -1,0 +1,78 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isUicUser() {
+      return isAuthenticated() && 
+             request.auth.token.email.matches('.*@uic.edu$');
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isTA() {
+      return isAuthenticated() && 
+             exists(/databases/$(database)/documents/TAs/$(request.auth.token.email));
+    }
+    
+    // Classes collection
+    match /classes/{classId} {
+      allow read: if isUicUser();
+      allow update: if isTA();
+    }
+    
+    // Students collection
+    match /students/{studentId} {
+      // Allow reading for all UIC users
+      allow read: if isUicUser();
+      
+      // Allow creating if the user is setting themselves as the owner
+      allow create: if isUicUser() && 
+                     request.resource.data.userId == request.auth.uid;
+      
+      // Allow deletion if either:
+      // 1. The user is deleting their own document (userId matches auth uid)
+      // 2. The user is a TA (verified via the TAs collection)
+      allow delete: if isUicUser() && (
+                      resource.data.userId == request.auth.uid || 
+                      isTA()
+                    );
+      
+      // Allow updates if the user is updating their own document
+      // (e.g., to add themselves to the queue)
+      allow update: if isUicUser() && isOwner(studentId);
+    }
+    
+    match /waitingQueue/{documentId} {
+      // Allow reading for all UIC users
+      allow read: if isUicUser();
+      
+      // Allow creating if the user is a TA
+      allow create: if isUicUser() && isTA();
+      
+      // Allow deletion if either:
+      // 1. The user is deleting their own document (userId matches auth uid)
+      // 2. The user is a TA (verified via the TAs collection)
+      allow delete: if isUicUser() && (
+                      resource.data.userId == request.auth.uid || 
+                      isTA()
+                    );
+      
+      // Prevent updates to existing documents
+      allow update: if false;
+    }
+    
+    
+    // TAs collection - using email as the document ID
+    match /TAs/{email} {
+      allow read: if isUicUser();
+      // Only administrators would manage TAs
+      allow write: if false;
+    }
+  }
+}
