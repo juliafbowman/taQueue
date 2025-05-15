@@ -36,3 +36,5 @@ Deploy: firebase deploy
 Live Demo
 Access the live application at: https://cs398-32c92.web.app/
 (Note: You need a UIC email address to access the system)
+----------------------------------------------------------
+To access the TA side of the application you need to replace the "student" part of the url with "TA" for a given class queue.
