@@ -1,40 +1,210 @@
-TA Queue System
-A real-time Teaching Assistant queue management system designed to streamline office hours for both students and TAs at UIC.
-Features
+# TA Queue  
+*A real-time queue management system built for UIC office hours as a CS938: Undergraduate Research course*
 
-Real-time Queue Updates: Students can see their position in the queue in real-time
-Push Notifications: Students receive notifications when they're removed from the queue
-Firebase Integration: Leverages Firebase Firestore, Authentication, and Cloud Messaging
-Domain-Restricted Access: Limits access to users with @uic.edu email addresses
-TA Management Interface: TAs can view and manage students in the queue
-Waiting List: Students moved from the main queue are added to a waiting list
-Mobile-Responsive Design: Works on both desktop and mobile devices
+## Overview
 
-Technology Stack
+TA Queue is a real-time office hours management system designed to streamline the experience for both students and teaching assistants at the University of Illinois Chicago (UIC).
 
-Frontend: HTML, CSS, JavaScript
-Backend: Firebase Cloud Functions (Node.js)
-Database: Firebase Firestore
-Authentication: Firebase Authentication with Google Sign-In
-Notifications: Firebase Cloud Messaging
-Hosting: Firebase Hosting
+**📚 Students can:**
+- Join a queue
+- See their position update in real time
+- Receive push notifications when their status changes
 
-Project Background
-This project was developed as part of the CS398 Research and Design course at UIC. The system was designed to address inefficiencies in traditional office hour wait times and improve the overall experience for both students and teaching assistants.
+**🍎 TAs can:**
+- View and manage the live queue
+- Mark students as being helped or completed
+- Move students to a waiting list
 
-Installation and Setup
+This project was developed as part of **CS 398: Research and Design** at UIC to address inefficiencies in traditional office hour wait times and improve the overall experience for both students and TAs.
+
+---
+
+## Features
+
+### 📚 Student-Facing
+- **Real-time queue updates** powered by Firebase  
+- **Push notifications** via Firebase Cloud Messaging  
+- **Waiting list support**  
+- **Mobile-responsive design**  
+- **@uic.edu domain-restricted authentication**  
+
+### 🍎 TA-Facing
+- **TA management interface**  
+- **View and manage queue entries**  
+- **Mark students as helping / done**  
+- **Move students to/from waiting list**  
+- **Instant real-time synchronization**
+
+---
+
+## Tech Stack
+
+### Frontend  
+- HTML, CSS, JavaScript
+- Mobile-first styling  
+
+### Backend  
+- **Firebase Firestore** (database)  
+- **Firebase Authentication** (Google Sign-In, domain restriction)  
+- **Firebase Cloud Messaging** (push notifications)  
+- **Firebase Hosting**  
+- **Firebase Cloud Functions** 
+
+### Real-Time Features  
+- Firestore listeners  
+- Immediate UI updates  
+- Zero refresh required  
+
+---
+
+## Project Structure
+```
+TAQUEUE/
+│
+├── .vscode/
+│   └── settings.json
+│
+├── functions/
+│   └── backend/
+│       ├── package.json
+│       ├── server.js
+│   └── .eslintrc.js
+│   └── index.js
+|   └── package.json
+│
+├── public/
+│   ├── images/
+│   ├── 404.html
+│   ├── firebase-messaging-sw.js
+│   ├── header.css
+│   ├── header.html
+│   ├── header.js
+│   ├── index.html
+│   ├── login-firebaseui.js
+│   ├── login.html
+│   ├── menu.css
+│   ├── menu.html
+│   ├── menu.js
+│   ├── search.css
+│   ├── search.html
+│   ├── search.js
+│   ├── student-queue-js.js
+│   ├── student-queue.css
+│   ├── student-queue.html
+│   ├── ta-queue-js.js
+│   ├── ta-queue.css
+│   └── ta-queue.html
+│
+├── .firebaserc
+├── .gitignore
+├── discord-notification-webhook.js
+├── firebase.json
+├── firestore.rules
+├── iconx.png
+└── README.md
+```
+
+---
+
+## Data Model
+
+Each student is stored as a Firestore document:
+```json
+{
+  "name": "Julia",
+  "question": "Can you help me debug recursion?",
+  "help": "Yes",
+  "timestamp": 1713900000000,
+  "status": "waiting"   // "waiting", "helping", "done"
+}
+```
+
+This structure supports:
+- Ordering by `timestamp`
+- Displaying status in the UI
+- Simple transitions between waiting → helping → done
+
+---
+
+## Project Background
+
+Traditional office hour processes often:
+- **Waste time**
+- **Cause confusion** about order
+- Require **manual oversight**
+
+TA Queue was created to provide:
+- A **structured, digital, real-time** queue
+- **Automatic notifications**
+- A **clean, centralized interface** for TAs
+- **Reduced congestion** and fewer repeated questions
+
+Development originally took place here:  
+✧ https://github.com/basiltiongson0/TA-Queue-Project
+
+*It was later migrated to this repository for hosting and deployment.*
+
+---
+
+## 💡 Installation & Setup
+
 To run this project locally:
 
-Clone this repository
-Create a Firebase project and update the configuration in the JavaScript files
-Set up Firebase Authentication, Firestore, and Cloud Messaging
-Install Firebase CLI: npm install -g firebase-tools
-Initialize the project: firebase init
-Serve locally: firebase serve
-Deploy: firebase deploy
+### 1. Clone the repository
+```bash 
+git clone https://github.com/juliafbowman/taQueue.git
+cd ta-queue
+```
 
-Live Demo
-Access the live application at: https://cs398-32c92.web.app/
-(Note: You need a UIC email address to access the system)
-----------------------------------------------------------
-To access the TA side of the application you need to replace the "student" part of the url with "TA" for a given class queue.
+### 2. Create a Firebase project
+Update the Firebase config inside the JS files.
+
+### 3. Enable Firebase Services
+- Firebase Authentication (Google Sign-In, domain restriction)
+- Firestore Database
+- Firebase Cloud Messaging
+
+### 4. Install Firebase CLI
+```bash
+npm install -g firebase-tools
+```
+
+### 5. Initialize Firebase in the project
+```bash
+firebase init
+```
+
+### 6. Serve locally
+```bash
+firebase serve
+```
+
+### 7. Deploy
+```bash
+firebase deploy
+```
+
+---
+
+## Live Demo
+
+Access the live application:  
+⟡ https://cs398-32c92.web.app/
+
+*(A UIC email address is required to log in.)*
+
+---
+
+## Contributors
+*CS 398: Undergraduate Research, Spring 2025*
+
+- **Julia Bowman**
+- **Basil Tiongson**
+
+### Faculty Advisors
+
+**Professor Adam Koehler**  
+*Primary advisor that led our one-on-one CS398 course throughout the semester to develop and refine this system.*
+
+**Professor Chris Kanich**  
+*Provided project approval and guidance on security features and best practices.*
