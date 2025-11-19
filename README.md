@@ -1,5 +1,7 @@
 # TA Queue  
-*A real-time queue management system built for UIC office hours as a CS938: Undergraduate Research course*
+*A real-time queue management system built for University of Illinois Chicago (UIC) office hours as a CS938: Undergraduate Research course*
+
+<img width="1185" height="770" alt="Screenshot 2025-11-19 at 4 09 25 PM" src="https://github.com/user-attachments/assets/7e48c9ed-796b-4585-959d-1516b9ab5971" />
 
 ## Overview
 
@@ -133,7 +135,7 @@ Traditional office hour processes often:
 - **Cause confusion** about order
 - Require **manual oversight**
 
-TA Queue was created to provide:
+💡 TA Queue was created to provide:
 - A **structured, digital, real-time** queue
 - **Automatic notifications**
 - A **clean, centralized interface** for TAs
@@ -146,7 +148,7 @@ Development originally took place here:
 
 ---
 
-## 💡 Installation & Setup
+## Installation & Setup
 
 To run this project locally:
 
