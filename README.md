@@ -190,9 +190,11 @@ firebase deploy
 ## Mobile UI
 
 ### Add Yourself to a Queue
-<img src="https://github.com/user-attachments/assets/144ce1dc-af24-40e3-99a6-2e33eb7aead8" width="350">
+<img src="https://github.com/user-attachments/assets/144ce1dc-af24-40e3-99a6-2e33eb7aead8" width="250">
 
 ### Add and Remove Yourself From a Queue
+<img src="https://github.com/user-attachments/assets/ffc4cdb2-9296-49d4-a60d-25f28c7e2cb1" width="250">
+
 ## Live Demo
 
 Access the live application:  
