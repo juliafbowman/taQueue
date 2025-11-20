@@ -232,8 +232,6 @@ Access the live application:
 
 *(A UIC email address is required to log in.)*
 
----
-
 ## Full Report
 [Read the full report (PDF)](https://github.com/user-attachments/files/23657747/398ForGitHub.pdf)
 
