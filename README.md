@@ -44,6 +44,7 @@ Development originally took place here:
 ## Features
 
 ### 📚 Student-Facing
+<img width="844" height="315" alt="Screenshot 2025-11-20 at 9 45 53 AM" src="https://github.com/user-attachments/assets/62b524b4-d1d7-413b-ab01-b57b55f1398f" />
 - **Real-time queue updates** powered by Firebase  
 - **Push notifications** via Firebase Cloud Messaging  
 - **Waiting list support**  
@@ -51,15 +52,12 @@ Development originally took place here:
 - **@uic.edu domain-restricted authentication**  
 
 ### 🍎 TA-Facing
+<img width="844" height="379" alt="Screenshot 2025-11-20 at 9 43 26 AM" src="https://github.com/user-attachments/assets/20c99ed0-bac3-4e2c-9d0e-58a60e72dccf" />
 - **TA management interface**  
 - **View and manage queue entries**  
 - **Mark students as helping / done**  
 - **Move students to/from waiting list**  
 - **Instant real-time synchronization**
-
-<img width="844" height="379" alt="Screenshot 2025-11-20 at 9 43 26 AM" src="https://github.com/user-attachments/assets/20c99ed0-bac3-4e2c-9d0e-58a60e72dccf" />
-
-*TA Class View*
 
 ---
 
