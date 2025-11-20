@@ -57,6 +57,9 @@ Development originally took place here:
 - **Move students to/from waiting list**  
 - **Instant real-time synchronization**
 
+<img width="844" height="379" alt="Screenshot 2025-11-20 at 9 43 26 AM" src="https://github.com/user-attachments/assets/20c99ed0-bac3-4e2c-9d0e-58a60e72dccf" />
+*TA Class View*
+
 ---
 
 ## Tech Stack
