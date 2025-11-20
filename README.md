@@ -231,7 +231,6 @@ Access the live application:
 ## Full Report
 [Read the full report (PDF)](https://github.com/user-attachments/files/23657747/398ForGitHub.pdf)
 
----
 
 ## Contributors
 *CS 398: Undergraduate Research, Spring 2025*
