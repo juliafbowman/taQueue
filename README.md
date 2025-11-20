@@ -21,6 +21,26 @@ This project was developed as part of **CS 398: Research and Design** at UIC to 
 
 ---
 
+## Project Background
+
+Traditional office hour processes often:
+- **Waste time**
+- **Cause confusion** about order
+- Require **manual oversight**
+
+💡 TA Queue was created to provide:
+- A **structured, digital, real-time** queue
+- **Automatic notifications**
+- A **clean, centralized interface** for TAs
+- **Reduced congestion** and fewer repeated questions
+
+Development originally took place here:  
+✧ https://github.com/basiltiongson0/TA-Queue-Project
+
+*It was later migrated to this repository for hosting and deployment.*
+
+---
+
 ## Features
 
 ### 📚 Student-Facing
@@ -110,41 +130,45 @@ TAQUEUE/
 
 ## Data Model
 
-Each student is stored as a Firestore document:
+The system uses Firebase Firestore with the following collections:
+
+### `student` Collection
+Each student entry in the queue:
 ```json
 {
+  "class_id": "CS111",
+  "help": "Yes",
   "name": "Julia",
   "question": "Can you help me debug recursion?",
-  "help": "Yes",
-  "timestamp": 1713900000000,
-  "status": "waiting"   // "waiting", "helping", "done"
+  "timestamp": 1713900000000
 }
 ```
 
+### `class` Collection
+Each class queue configuration:
+```json
+{
+  "active": true,
+  "class_id": "CS111"
+}
+```
+
+### `ta` Collection
+Authorized teaching assistants:
+```json
+{
+  "email": "ta@uic.edu"
+}
+```
+
+### `waitingList` Collection
+Students in the waiting list (stored as document UUIDs with no additional fields)
+
 This structure supports:
-- Ordering by `timestamp`
-- Displaying status in the UI
-- Simple transitions between waiting → helping → done
-
----
-
-## Project Background
-
-Traditional office hour processes often:
-- **Waste time**
-- **Cause confusion** about order
-- Require **manual oversight**
-
-💡 TA Queue was created to provide:
-- A **structured, digital, real-time** queue
-- **Automatic notifications**
-- A **clean, centralized interface** for TAs
-- **Reduced congestion** and fewer repeated questions
-
-Development originally took place here:  
-✧ https://github.com/basiltiongson0/TA-Queue-Project
-
-*It was later migrated to this repository for hosting and deployment.*
+- Ordering students by `timestamp`
+- Class-specific queue management
+- TA authorization via email
+- Waiting list tracking
 
 ---
 
