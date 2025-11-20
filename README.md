@@ -187,7 +187,12 @@ firebase deploy
 ```
 
 ---
+## Mobile UI
 
+### Add Yourself to a Queue
+![addSteve](https://github.com/user-attachments/assets/144ce1dc-af24-40e3-99a6-2e33eb7aead8)
+
+### Add and Remove Yourself From a Queue
 ## Live Demo
 
 Access the live application:  
